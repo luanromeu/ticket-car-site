@@ -1,0 +1,54 @@
+# CI: roda em todo PR e em push na develop. Não publica nada.
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main, 'release/**', 'hotfix/**']
+  push:
+    branches: [develop]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  git-flow:
+    name: Regras do git flow
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Origem do PR
+        env:
+          BASE: ${{ github.base_ref }}
+          HEAD: ${{ github.head_ref }}
+        run: |
+          if [[ "$BASE" == main && ! "$HEAD" =~ ^(release|hotfix)/[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::PR para main só pode vir de release/X.Y.Z ou hotfix/X.Y.Z (veio de '$HEAD')."
+            exit 1
+          fi
+          echo "ok: $HEAD → $BASE"
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      # build completo (sem --draft): falha se faltar algum dado em site.config.json
+      - run: node build.mjs
+      - name: Links internos
+        run: |
+          # todo href/src que começa com / precisa existir em dist/
+          fail=0
+          for f in $(find dist -name '*.html'); do
+            for p in $(grep -oE '(href|src)="/[^"#?]*' "$f" | sed -E 's/^(href|src)="//' | sort -u); do
+              t="dist$p"; [[ "$p" == */ ]] && t="${t}index.html"
+              [[ -e "$t" || -e "$t/index.html" ]] || { echo "::error file=$f::link quebrado: $p"; fail=1; }
+            done
+          done
+          exit $fail

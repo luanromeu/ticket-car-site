@@ -1,0 +1,98 @@
+# Deploy do site institucional (https://ticketcar.com.br) no S3 + CloudFront.
+#
+#   push em release/X.Y.Z ou hotfix/X.Y.Z → só build e conferência (o site não tem ambiente DEV;
+#                                            revise com "node build.mjs --draft" e abra dist/ no navegador)
+#   merge do PR release/X.Y.Z → main       → PRD: publica no bucket, limpa o cache do CloudFront e cria a tag vX.Y.Z
+#
+# Credenciais AWS via OIDC (sem chave guardada):
+#   ticketcar-gh-site-prd → só escreve no bucket do site e invalida a distribuição dele; só aceito na main
+#   (criado por scripts/ci_role.py)
+name: Deploy
+
+on:
+  push:
+    branches: [main, 'release/**', 'hotfix/**']
+  workflow_dispatch:
+
+env:
+  AWS_REGION: sa-east-1
+  AWS_ACCOUNT: '728548356832'
+  BUCKET: ticketcar-site-728548356832
+  DISTRIBUTION: E1BJOB2FL9YEG4
+
+jobs:
+  check:
+    name: Release (build)
+    if: startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/hotfix/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Nome da branch
+        run: |
+          if [[ ! "$GITHUB_REF_NAME" =~ ^(release|hotfix)/[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::A branch deve se chamar release/X.Y.Z ou hotfix/X.Y.Z (é '$GITHUB_REF_NAME')."
+            exit 1
+          fi
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: node build.mjs
+      - run: |
+          echo "### Site ${GITHUB_REF_NAME#*/}: build ok" >> "$GITHUB_STEP_SUMMARY"
+          echo "O site não tem ambiente DEV. Ao fazer o merge do PR para a main, ele é publicado em https://ticketcar.com.br." >> "$GITHUB_STEP_SUMMARY"
+
+  prd:
+    name: PRD (S3 + CloudFront)
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # tag vX.Y.Z
+      pull-requests: read    # conferir de qual PR veio o merge
+      id-token: write
+    concurrency:
+      group: deploy-prd
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+      - name: Origem do merge e versão
+        id: v
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          head=$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/pulls" \
+            --jq '[.[] | select(.merged_at != null and .base.ref == "main")][0].head.ref // ""')
+          if [[ ! "$head" =~ ^(release|hotfix)/([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+            echo "::error::Push na main sem PR de release/X.Y.Z ou hotfix/X.Y.Z (origem: '${head:-nenhum PR}'). Nada publicado."
+            exit 1
+          fi
+          v="${BASH_REMATCH[2]}"
+          if git ls-remote --exit-code --tags origin "refs/tags/v$v" >/dev/null; then
+            echo "::error::A versão $v já foi publicada (tag v$v existe). Use uma nova release."
+            exit 1
+          fi
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: node build.mjs
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT }}:role/ticketcar-gh-site-prd
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Enviar para o S3
+        run: |
+          # páginas: cache curto (textos das políticas mudam); estáticos: 1 dia
+          aws s3 sync dist/ "s3://$BUCKET/" --delete --exclude '*.html' --exclude '*.xml' --exclude '*.txt' \
+            --cache-control "public, max-age=86400" --only-show-errors
+          aws s3 sync dist/ "s3://$BUCKET/" --exclude '*' --include '*.html' \
+            --cache-control "public, max-age=300" --content-type "text/html; charset=utf-8" --only-show-errors
+          aws s3 sync dist/ "s3://$BUCKET/" --exclude '*' --include '*.xml' --include '*.txt' \
+            --cache-control "public, max-age=300" --only-show-errors
+      - name: Limpar o cache do CloudFront
+        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION" --paths '/*' --query 'Invalidation.Id' --output text
+      - name: Tag v${{ steps.v.outputs.version }}
+        run: |
+          git tag "v${{ steps.v.outputs.version }}"
+          git push origin "v${{ steps.v.outputs.version }}"
+          echo "### Site v${{ steps.v.outputs.version }} publicado" >> "$GITHUB_STEP_SUMMARY"
+          echo "https://ticketcar.com.br" >> "$GITHUB_STEP_SUMMARY"
