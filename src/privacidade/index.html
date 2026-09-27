@@ -52,6 +52,7 @@
               <tr><td>Oficinas</td><td>CNPJ, razão social, nome, cidade e UF da oficina; nome e e-mail do responsável e dos mecânicos</td><td>A oficina</td></tr>
               <tr><td>Manutenções</td><td>Data, quilometragem, serviços e peças, observações, fotos das peças trocadas, próxima troca e o nome de quem registrou</td><td>A oficina autorizada</td></tr>
               <tr><td>Autorizações</td><td>Qual oficina acessou qual veículo, quando e por quanto tempo</td><td>Você e a oficina</td></tr>
+              <tr><td>Notificações</td><td>Identificador do aparelho para envio de notificações (token do Firebase) e sua preferência de receber avisos</td><td>O app, quando você ativa as notificações</td></tr>
               <tr><td>Uso e segurança</td><td>Endereço IP, data e hora das ações, identificadores da sessão e registros de auditoria</td><td>Gerados pelo uso</td></tr>
             </tbody>
           </table>
@@ -60,6 +61,7 @@
           <h2 id="finalidades">3. Para que usamos e com qual base legal (LGPD, art. 7º)</h2>
           <ul>
             <li><b>Prestar o serviço</b> (criar a conta, guardar o histórico, avisar as próximas revisões, dar acesso às oficinas que você autoriza): execução de contrato.</li>
+            <li><b>Enviar notificações</b> (lembretes de revisão, manutenção registrada, análise de documento, acesso de oficina), se você ativar: consentimento, que pode ser retirado a qualquer momento no app ou nas configurações do Android.</li>
             <li><b>Comprovar que o veículo é seu</b> (conferir o CRLV-e com o CPF do cadastro) e evitar fraudes: execução de contrato e legítimo interesse.</li>
             <li><b>Segurança da conta e do serviço</b> (login, limites de tentativas, auditoria): legítimo interesse.</li>
             <li><b>Guardar registros de acesso</b> pelo prazo exigido pelo Marco Civil da Internet: cumprimento de obrigação legal.</li>
@@ -70,7 +72,7 @@
           <ul>
             <li><b>Oficinas que você autoriza:</b> veem os dados do veículo autorizado e o histórico de manutenção dele, só durante o prazo da autorização. O nome de quem registrou cada serviço aparece para você e para as oficinas autorizadas no veículo.</li>
             <li><b>Novo dono do veículo:</b> o histórico de manutenção acompanha o carro. Quem comprar o veículo e tiver o CRLV-e aprovado verá as manutenções já registradas, mas não os seus dados pessoais.</li>
-            <li><b>Fornecedores que operam o serviço para nós:</b> hospedagem, armazenamento de arquivos, login e envio de e-mails (Amazon Web Services), banco de dados (MongoDB Atlas) e distribuição do app (Google Play). Eles tratam os dados só para prestar esses serviços.</li>
+            <li><b>Fornecedores que operam o serviço para nós:</b> hospedagem, armazenamento de arquivos, login e envio de e-mails (Amazon Web Services), banco de dados (MongoDB Atlas), envio de notificações (Google Firebase Cloud Messaging) e distribuição do app (Google Play). Eles tratam os dados só para prestar esses serviços.</li>
             <li><b>Autoridades:</b> quando houver obrigação legal ou ordem judicial.</li>
           </ul>
           <p>Não vendemos nem alugamos dados pessoais.</p>
@@ -118,9 +120,11 @@
           <h2 id="permissoes">9. Permissões do app</h2>
           <ul>
             <li><b>Câmera:</b> usada só quando você toca para fotografar o CRLV-e, ler o QR code da autorização ou, no caso das oficinas, fotografar a peça trocada.</li>
+            <li><b>Notificações:</b> pedida só depois que você toca em "Ativar" na tela inicial. Pode ser desligada no Perfil ou nas configurações do Android.</li>
+            <li><b>Localização:</b> pedida só quando você usa uma função que precisa dela, e só com o app aberto (nunca em segundo plano). Para mostrar oficinas perto de você, o app usa a localização aproximada, arredondada para cerca de 1 km: ela serve só para ordenar a lista na hora e não é guardada. Se o responsável por uma oficina tocar em "Estou na oficina agora", a localização precisa do aparelho marca o endereço da oficina no mapa, e esse ponto passa a fazer parte do perfil público da oficina. Se você recusar, pode buscar pela cidade ou pelo CEP.</li>
             <li><b>Internet:</b> para sincronizar os dados e receber atualizações do app.</li>
           </ul>
-          <p>O app não acessa sua localização, contatos ou a galeria sem uma ação sua. Este site não usa cookies de rastreamento.</p>
+          <p>O app não acessa seus contatos nem a galeria sem uma ação sua, e só usa a localização como descrito acima. Este site não usa cookies de rastreamento.</p>
 
           <h2 id="menores">10. Menores de idade</h2>
           <p>O TicketCar é destinado a maiores de 18 anos. Não coletamos intencionalmente dados de crianças e adolescentes.</p>
