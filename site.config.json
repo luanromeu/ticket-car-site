@@ -1,0 +1,10 @@
+{
+  "_ajuda": "Dados do responsável que aparecem na Política de privacidade e nos Termos. DOCUMENTO (CNPJ) e CIDADE_UF são opcionais; CPF não é publicado. VIGENCIA vazia = data de hoje.",
+  "CONTROLADOR": "Luan Lima",
+  "DOCUMENTO": "",
+  "CIDADE_UF": "Franca/SP",
+  "EMAIL_CONTATO": "suporte@ticketcar.com.br",
+  "EMAIL_PRIVACIDADE": "suporte@ticketcar.com.br",
+  "VIGENCIA": "",
+  "API_URL": "https://api.ticketcar.com.br"
+}

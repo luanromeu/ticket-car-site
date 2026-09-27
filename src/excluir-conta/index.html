@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!--#include head-->
+    <title>Excluir minha conta — TicketCar</title>
+    <meta name="description" content="Como excluir sua conta do TicketCar e quais dados são apagados." />
+    <link rel="canonical" href="https://ticketcar.com.br/excluir-conta/" />
+  </head>
+  <body>
+    <!--#include header-light-->
+    <main id="conteudo">
+      <div class="doc-hero">
+        <div class="wrap">
+          <span class="kicker">Sua conta</span>
+          <h1>Excluir minha conta</h1>
+          <p>Você pode excluir sua conta do TicketCar a qualquer momento. A exclusão é definitiva.</p>
+        </div>
+      </div>
+      <div class="wrap doc">
+        <nav class="toc" aria-label="Nesta página">
+          <b>Nesta página</b>
+          <ol>
+            <li><a href="#pelo-app">Pelo app</a></li>
+            <li><a href="#o-que">O que é apagado</a></li>
+            <li><a href="#sem-app">Sem o app</a></li>
+          </ol>
+        </nav>
+        <article class="prose">
+          <h2 id="pelo-app">Pelo app (mais rápido)</h2>
+          <ol>
+            <li>Abra o TicketCar e entre na sua conta.</li>
+            <li>Toque no ícone de perfil, no canto superior direito.</li>
+            <li>Toque em <b>Excluir minha conta</b>, digite <b>EXCLUIR</b> e confirme.</li>
+          </ol>
+          <p>A exclusão acontece na hora.</p>
+
+          <h2 id="o-que">O que é apagado e o que é mantido</h2>
+          <table>
+            <thead><tr><th>Apagado</th><th>Mantido</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Login (e-mail e senha), nome, CPF e celular; arquivos do CRLV-e; seus acessos aos veículos; autorizações dadas por você às oficinas.</td>
+                <td>O histórico de manutenção dos veículos, sem identificar você, porque pertence ao veículo. Registros de acesso pelo prazo exigido em lei (6 meses).</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="note">
+            Se você é responsável por uma oficina com outros mecânicos, remova os mecânicos da equipe antes de excluir a conta.
+          </p>
+
+          <h2 id="sem-app">Sem o app</h2>
+          <p>
+            Não tem mais o app instalado? Envie o pedido abaixo com o e-mail da sua conta. Vamos confirmar o pedido por esse e-mail
+            e concluir a exclusão em até 15 dias. Você também pode escrever para <a href="mailto:{{EMAIL_PRIVACIDADE}}">{{EMAIL_PRIVACIDADE}}</a>.
+          </p>
+          <form class="form-card" id="pedido" data-api="{{API_URL}}" novalidate>
+            <label>E-mail da conta
+              <input type="email" name="email" required autocomplete="email" maxlength="254" placeholder="voce@exemplo.com" />
+            </label>
+            <label>Nome (opcional)
+              <input type="text" name="name" maxlength="120" autocomplete="name" />
+            </label>
+            <label>Mensagem (opcional)
+              <textarea name="message" rows="3" maxlength="1000"></textarea>
+            </label>
+            <p class="form-msg" role="status" hidden></p>
+            <button class="btn btn-primary" type="submit">Enviar pedido de exclusão</button>
+          </form>
+        </article>
+      </div>
+    </main>
+    <!--#include footer-->
+    <script src="/assets/site.js" defer></script>
+  </body>
+</html>
