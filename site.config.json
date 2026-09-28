@@ -6,5 +6,6 @@
   "EMAIL_CONTATO": "suporte@ticketcar.com.br",
   "EMAIL_PRIVACIDADE": "suporte@ticketcar.com.br",
   "VIGENCIA": "",
-  "API_URL": "https://api.ticketcar.com.br"
+  "API_URL": "https://api.ticketcar.com.br",
+  "APP_URL": "https://app.ticketcar.com.br"
 }
