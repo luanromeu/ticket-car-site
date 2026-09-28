@@ -1253,3 +1253,173 @@ details p {
     transition: none;
   }
 }
+
+
+/* ---------- entrar no sistema (app.ticketcar.com.br) ---------- */
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.top-login {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.93rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.top-login:hover {
+  color: #fff;
+}
+
+.top.light .top-login {
+  color: var(--ink-2);
+}
+
+.btn-lg {
+  min-height: 56px;
+  padding: 0 26px;
+  border-radius: 14px;
+  font-size: 1.02rem;
+}
+
+.btn-lg svg {
+  transition: transform 0.15s ease;
+}
+
+.btn-lg:hover svg {
+  transform: translateX(3px);
+}
+
+.btn-white {
+  background: #fff;
+  color: var(--blue);
+  box-shadow: 0 12px 28px -12px rgba(11, 18, 32, 0.45);
+}
+
+.btn-orange {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 10px 24px -10px rgba(249, 115, 22, 0.9);
+}
+
+.btn-orange:hover {
+  background: #ea650c;
+}
+
+.cta-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+}
+
+.cta-note svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.cta-note.dark {
+  color: var(--muted);
+}
+
+/* apps "em breve": presentes, mas sem competir com o botão principal */
+.soon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.soon-label {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.store-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.28);
+  border-radius: 11px;
+  color: rgba(255, 255, 255, 0.78);
+  cursor: default;
+}
+
+.store-soon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.store-soon small {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.store-soon b {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.1;
+}
+
+.final-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.final-login {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.final-login:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .top-actions {
+    margin-left: auto;
+    gap: 12px;
+  }
+
+  .top .top-actions .btn {
+    margin-left: 0;
+  }
+
+  .cta-row .btn-lg {
+    flex: 1 1 100%;
+  }
+
+  .final-cta {
+    width: 100%;
+  }
+
+  .final-cta .btn {
+    width: 100%;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-lg svg {
+    transition: none;
+  }
+}
