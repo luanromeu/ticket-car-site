@@ -17,18 +17,22 @@
       <section class="hero">
         <div class="wrap">
           <div>
-            <span class="eyebrow"><span class="dot"></span>App para Android · em breve no Google Play</span>
+            <span class="eyebrow"><span class="dot"></span>Já disponível no navegador · apps para Android e iOS em breve</span>
             <h1>O histórico de manutenção do seu carro, <em>comprovado</em>.</h1>
             <p class="lead">
               A oficina registra cada serviço no TicketCar: data, quilometragem, o que foi trocado e a foto da peça.
               Você acompanha as próximas revisões e, na hora de vender, mostra um histórico que acompanha o carro.
             </p>
-            <div class="cta-row" id="baixar">
-              <a class="store" href="#baixar" aria-disabled="true" title="Em breve">
-                <!--#icon play--><span><small>Em breve no</small><b>Google Play</b></span>
-              </a>
-              <a class="btn btn-ghost" href="#oficinas">Sou oficina</a>
+            <div class="cta-row" id="comecar">
+              <a class="btn btn-primary btn-lg" href="{{APP_URL}}/signup">Usar agora, é grátis<!--#icon arrow--></a>
+              <a class="btn btn-ghost btn-lg" href="{{APP_URL}}/login">Já tenho conta</a>
             </div>
+            <p class="cta-note"><!--#icon globe-->Funciona no navegador do celular ou do computador, sem instalar nada.</p>
+            <div class="soon" aria-label="Apps para Android e iOS em breve">
+                <span class="soon-label">Apps em breve</span>
+                <span class="store-soon"><!--#icon play--><span><small>Em breve no</small><b>Google Play</b></span></span>
+                <span class="store-soon"><!--#icon apple--><span><small>Em breve na</small><b>App Store</b></span></span>
+              </div>
             <ul class="hero-points">
               <li><!--#icon check-->Oficina só acessa com a sua autorização</li>
               <li><!--#icon check-->Foto da peça trocada</li>
@@ -136,8 +140,9 @@
             <h2>Registre o serviço em minutos e fidelize o cliente</h2>
             <p>Com o TicketCar, sua oficina mostra o que fez, com foto, e o cliente volta na próxima revisão.</p>
             <div class="cta-row" style="margin-top:26px">
-              <a class="store" href="#baixar" aria-disabled="true" title="Em breve"><!--#icon play--><span><small>Em breve no</small><b>Google Play</b></span></a>
+              <a class="btn btn-orange btn-lg" href="{{APP_URL}}/signup">Cadastrar minha oficina<!--#icon arrow--></a>
             </div>
+            <p class="cta-note dark">Grátis. Crie sua conta e toque em "Tem uma oficina?" na tela inicial.</p>
           </div>
           <div class="ws-grid">
             <article class="card"><span class="ico orange"><!--#icon store--></span><h3>Oficina verificada</h3><p>Cadastro com CNPJ e análise da nossa equipe.</p></article>
@@ -155,6 +160,10 @@
             <h2>Perguntas que a gente sempre ouve</h2>
           </div>
           <div class="faq">
+            <details>
+              <summary>Preciso instalar alguma coisa?</summary>
+              <p>Não. O TicketCar já funciona no navegador do celular ou do computador: toque em <a href="{{APP_URL}}/signup">Usar agora</a> e crie sua conta. Os apps para Android e iOS estão chegando; quando saírem, é só entrar com a mesma conta.</p>
+            </details>
             <details>
               <summary>O que acontece com o histórico se eu vender o carro?</summary>
               <p>O histórico pertence ao veículo. Quando o novo dono cadastra o carro e o CRLV-e dele é aprovado, ele passa a ver as manutenções já registradas. Você deixa de ter acesso ao veículo.</p>
@@ -184,13 +193,17 @@
           <div class="box">
             <div>
               <h2>Seu carro merece um histórico de verdade</h2>
-              <p>O TicketCar chega em breve ao Google Play.</p>
+              <p>Comece agora pelo navegador. Os apps para Android e iOS chegam em breve.</p>
             </div>
-            <a class="store" href="#baixar" aria-disabled="true" title="Em breve"><!--#icon play--><span><small>Em breve no</small><b>Google Play</b></span></a>
+            <div class="final-cta">
+              <a class="btn btn-white btn-lg" href="{{APP_URL}}/signup">Usar agora, é grátis<!--#icon arrow--></a>
+              <a class="final-login" href="{{APP_URL}}/login">Já tenho conta · Entrar</a>
+            </div>
           </div>
         </div>
       </div>
     </main>
+
 
     <!--#include footer-->
   </body>
