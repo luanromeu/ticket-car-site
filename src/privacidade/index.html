@@ -52,6 +52,8 @@
               <tr><td>Oficinas</td><td>CNPJ, razão social, nome, cidade e UF da oficina; nome e e-mail do responsável e dos mecânicos</td><td>A oficina</td></tr>
               <tr><td>Manutenções</td><td>Data, quilometragem, serviços e peças, observações, fotos das peças trocadas, próxima troca e o nome de quem registrou</td><td>A oficina autorizada</td></tr>
               <tr><td>Autorizações</td><td>Qual oficina acessou qual veículo, quando e por quanto tempo</td><td>Você e a oficina</td></tr>
+              <tr><td>Perfil público da oficina</td><td>Endereço, ponto no mapa, fotos, horário, telefone, WhatsApp, especialidades e descrição da oficina; visitas ao perfil e cliques (só contagens, sem identificar quem viu); visitas do selo Verificada (checklist, fotos e posição do representante no local)</td><td>O responsável pela oficina e a nossa equipe</td></tr>
+              <tr><td>Avaliações</td><td>Nota, etiquetas, comentário, a resposta da oficina, o primeiro nome e a inicial do sobrenome de quem avaliou, o modelo do carro e o serviço avaliado</td><td>Você, ao avaliar; a oficina, ao responder</td></tr>
               <tr><td>Notificações</td><td>Identificador do aparelho para envio de notificações (token do Firebase) e sua preferência de receber avisos</td><td>O app, quando você ativa as notificações</td></tr>
               <tr><td>Uso e segurança</td><td>Endereço IP, data e hora das ações, identificadores da sessão e registros de auditoria</td><td>Gerados pelo uso</td></tr>
             </tbody>
@@ -71,6 +73,7 @@
           <h2 id="compartilhamento">4. Com quem compartilhamos</h2>
           <ul>
             <li><b>Oficinas que você autoriza:</b> veem os dados do veículo autorizado e o histórico de manutenção dele, só durante o prazo da autorização. O nome de quem registrou cada serviço aparece para você e para as oficinas autorizadas no veículo.</li>
+            <li><b>Qualquer pessoa que use o TicketCar:</b> vê o perfil público das oficinas e as avaliações, com o primeiro nome e a inicial do sobrenome de quem avaliou, o modelo do carro e o serviço. Nunca mostramos placa, CPF, e-mail, telefone ou sobrenome completo de quem avalia.</li>
             <li><b>Novo dono do veículo:</b> o histórico de manutenção acompanha o carro. Quem comprar o veículo e tiver o CRLV-e aprovado verá as manutenções já registradas, mas não os seus dados pessoais.</li>
             <li><b>Fornecedores que operam o serviço para nós:</b> hospedagem, armazenamento de arquivos, login e envio de e-mails (Amazon Web Services), banco de dados (MongoDB Atlas), envio de notificações (Google Firebase Cloud Messaging) e distribuição do app (Google Play). Eles tratam os dados só para prestar esses serviços.</li>
             <li><b>Autoridades:</b> quando houver obrigação legal ou ordem judicial.</li>
@@ -84,7 +87,7 @@
           </p>
           <ul>
             <li><b>Enquanto a conta estiver ativa:</b> guardamos os dados para prestar o serviço.</li>
-            <li><b>Ao excluir a conta:</b> apagamos nome, e-mail, CPF, celular, login e os arquivos do CRLV-e. O histórico de manutenção dos veículos é mantido, sem identificar você, porque pertence ao veículo.</li>
+            <li><b>Ao excluir a conta:</b> apagamos nome, e-mail, CPF, celular, login e os arquivos do CRLV-e. O histórico de manutenção dos veículos é mantido, sem identificar você, porque pertence ao veículo. Nas suas avaliações, o comentário é apagado e o nome passa a ser "Cliente TicketCar"; a nota continua na média da oficina, sem identificar você.</li>
             <li><b>Registros de acesso:</b> guardados por pelo menos 6 meses, como exige o Marco Civil da Internet.</li>
             <li><b>Registros de auditoria:</b> guardados enquanto forem necessários para segurança e para a defesa de direitos.</li>
           </ul>
