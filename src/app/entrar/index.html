@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!--#include head-->
+    <title>Entrando no TicketCar</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <main id="conteudo">
+      <div class="doc-hero" style="border:0;background:transparent;padding:96px 0">
+        <div class="wrap" style="text-align:center;max-width:460px">
+          <span class="kicker">Login com Google</span>
+          <h1 style="font-size:1.9rem">Quase lá</h1>
+          <p id="msg" style="margin-bottom:28px">Abrindo o TicketCar…</p>
+          <p style="display:flex;flex-direction:column;gap:12px;align-items:stretch">
+            <a id="open-app" class="btn btn-primary btn-lg" href="#" hidden>Abrir no app TicketCar</a>
+            <a id="open-web" class="btn btn-outline" href="#">Continuar no navegador</a>
+          </p>
+        </div>
+      </div>
+    </main>
+    <script>
+      // Volta do login com Google (App Link ticketcar.com.br/app/entrar?c=...).
+      // Com o App Link verificado o Android abre o app direto e esta página nem aparece; se cair aqui,
+      // abre o app pelo pacote (intent) ou continua no navegador: o código de uso único vale nos dois.
+      (function () {
+        var dev = location.pathname.indexOf('/app-dev/') === 0;
+        var pkg = dev ? 'com.ticketcar.app.dev' : 'com.ticketcar.app';
+        var web = (dev ? 'https://app-dev.ticketcar.com.br' : 'https://app.ticketcar.com.br') + '/entrar' + location.search;
+        var android = /Android/i.test(navigator.userAgent);
+        document.getElementById('open-web').href = web;
+        if (!android) {
+          location.replace(web);
+          return;
+        }
+        var intent = 'intent://ticketcar.com.br' + location.pathname + location.search +
+          '#Intent;scheme=https;package=' + pkg + ';S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
+        var btn = document.getElementById('open-app');
+        btn.href = intent;
+        btn.hidden = false;
+        document.getElementById('msg').textContent = 'Toque em "Abrir no app TicketCar" para concluir o login.';
+        location.href = intent;
+      })();
+    </script>
+  </body>
+</html>

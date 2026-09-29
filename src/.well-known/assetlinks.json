@@ -1,9 +1,23 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.ticketcar.app.dev",
+      "sha256_cert_fingerprints": [
+        "37:59:FD:5C:ED:63:DB:84:90:DA:3B:66:CB:08:C5:C3:3C:33:01:1D:BC:DA:B1:13:B5:19:72:13:EF:B8:E6:A6"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ticketcar.app",
       "sha256_cert_fingerprints": [
         "37:59:FD:5C:ED:63:DB:84:90:DA:3B:66:CB:08:C5:C3:3C:33:01:1D:BC:DA:B1:13:B5:19:72:13:EF:B8:E6:A6"
       ]
