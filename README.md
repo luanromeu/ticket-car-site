@@ -1,5 +1,7 @@
 # ticket-car-site
 
+<p align="center"><img src="docs/brand/ticketcar.svg" alt="TicketCar" width="180" /></p>
+
 Site institucional do TicketCar (`https://ticketcar.com.br`): landing page, Política de privacidade,
 Termos de uso e a página de exclusão de conta (exigida pela Play Store).
 
