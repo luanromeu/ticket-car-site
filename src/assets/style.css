@@ -106,19 +106,17 @@ a {
 }
 
 .brand-mark {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: var(--blue);
-  color: #fff;
-  box-shadow: 0 6px 18px -6px rgba(26, 86, 219, 0.8);
+  display: block;
+  width: 42px;
+  height: 27px;
+  object-fit: contain;
+  border-radius: 3px;
+  flex: none;
 }
 
-.brand-mark svg {
-  width: 24px;
-  height: 24px;
+.top:not(.light) .brand-mark,
+.foot .brand-mark {
+  filter: invert(1);
 }
 
 .nav {
