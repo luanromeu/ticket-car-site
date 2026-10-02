@@ -38,7 +38,7 @@
         <article class="prose">
           <h2 id="quem">1. Quem somos</h2>
           <p>
-            O TicketCar é um serviço para guardar o histórico de manutenção de veículos, registrado por oficinas autorizadas pelo dono.
+            O TicketCar é um serviço para guardar o histórico de manutenção de veículos, registrado por empresas de manutenção autorizadas pelo dono.
             O controlador dos dados pessoais é <b>{{CONTROLADOR}}</b>{{DOC_PAREN}}{{CIDADE_FRASE}}.
             Para falar sobre seus dados, escreva para <a href="mailto:{{EMAIL_PRIVACIDADE}}">{{EMAIL_PRIVACIDADE}}</a>.
           </p>
@@ -49,11 +49,11 @@
             <tbody>
               <tr><td>Cadastro</td><td>Nome, e-mail, CPF, celular (opcional), senha (guardada só pelo serviço de login, nunca por nós)</td><td>Você</td></tr>
               <tr><td>Veículos</td><td>Placa, RENAVAM, marca, modelo, ano, cor, apelido, CRLV-e (foto ou PDF) e dados de análise do documento</td><td>Você e a análise da nossa equipe</td></tr>
-              <tr><td>Oficinas</td><td>CNPJ, razão social, nome, cidade e UF da oficina; nome e e-mail do responsável e dos mecânicos</td><td>A oficina</td></tr>
-              <tr><td>Manutenções</td><td>Data, quilometragem, serviços e peças, observações, fotos das peças trocadas, próxima troca e o nome de quem registrou</td><td>A oficina autorizada</td></tr>
-              <tr><td>Autorizações</td><td>Qual oficina acessou qual veículo, quando e por quanto tempo</td><td>Você e a oficina</td></tr>
-              <tr><td>Perfil público da oficina</td><td>Endereço, ponto no mapa, fotos, horário, telefone, WhatsApp, especialidades e descrição da oficina; visitas ao perfil e cliques (só contagens, sem identificar quem viu); visitas do selo Verificada (checklist, fotos e posição do representante no local)</td><td>O responsável pela oficina e a nossa equipe</td></tr>
-              <tr><td>Avaliações</td><td>Nota, etiquetas, comentário, a resposta da oficina, o primeiro nome e a inicial do sobrenome de quem avaliou, o modelo do carro e o serviço avaliado</td><td>Você, ao avaliar; a oficina, ao responder</td></tr>
+              <tr><td>Empresas</td><td>CNPJ, razão social, nome, cidade e UF da empresa; nome e e-mail do responsável e dos profissionais</td><td>A empresa</td></tr>
+              <tr><td>Manutenções</td><td>Data, quilometragem, serviços e peças, observações, fotos das peças trocadas, próxima troca e o nome de quem registrou</td><td>A empresa autorizada</td></tr>
+              <tr><td>Autorizações</td><td>Qual empresa acessou qual veículo, quando e por quanto tempo</td><td>Você e a empresa</td></tr>
+              <tr><td>Perfil público da empresa</td><td>Endereço, ponto no mapa, fotos, horário, telefone, WhatsApp, serviços oferecidos e descrição da empresa; visitas ao perfil e cliques (só contagens, sem identificar quem viu); visitas do selo Empresa Verificada (checklist, fotos e posição do representante no local)</td><td>O responsável pela empresa e a nossa equipe</td></tr>
+              <tr><td>Avaliações</td><td>Nota, etiquetas, comentário, a resposta da empresa, o primeiro nome e a inicial do sobrenome de quem avaliou, o modelo do carro e o serviço avaliado</td><td>Você, ao avaliar; a empresa, ao responder</td></tr>
               <tr><td>Notificações</td><td>Identificador do aparelho para envio de notificações (token do Firebase) e sua preferência de receber avisos</td><td>O app, quando você ativa as notificações</td></tr>
               <tr><td>Uso e segurança</td><td>Endereço IP, data e hora das ações, identificadores da sessão e registros de auditoria</td><td>Gerados pelo uso</td></tr>
             </tbody>
@@ -62,8 +62,8 @@
 
           <h2 id="finalidades">3. Para que usamos e com qual base legal (LGPD, art. 7º)</h2>
           <ul>
-            <li><b>Prestar o serviço</b> (criar a conta, guardar o histórico, avisar as próximas revisões, dar acesso às oficinas que você autoriza): execução de contrato.</li>
-            <li><b>Enviar notificações</b> (lembretes de revisão, manutenção registrada, análise de documento, acesso de oficina), se você ativar: consentimento, que pode ser retirado a qualquer momento no app ou nas configurações do Android.</li>
+            <li><b>Prestar o serviço</b> (criar a conta, guardar o histórico, avisar as próximas revisões, dar acesso às empresas que você autoriza): execução de contrato.</li>
+            <li><b>Enviar notificações</b> (lembretes de revisão, manutenção registrada, análise de documento, acesso de empresa), se você ativar: consentimento, que pode ser retirado a qualquer momento no app ou nas configurações do Android.</li>
             <li><b>Comprovar que o veículo é seu</b> (conferir o CRLV-e com o CPF do cadastro) e evitar fraudes: execução de contrato e legítimo interesse.</li>
             <li><b>Segurança da conta e do serviço</b> (login, limites de tentativas, auditoria): legítimo interesse.</li>
             <li><b>Guardar registros de acesso</b> pelo prazo exigido pelo Marco Civil da Internet: cumprimento de obrigação legal.</li>
@@ -72,8 +72,8 @@
 
           <h2 id="compartilhamento">4. Com quem compartilhamos</h2>
           <ul>
-            <li><b>Oficinas que você autoriza:</b> veem os dados do veículo autorizado e o histórico de manutenção dele, só durante o prazo da autorização. O nome de quem registrou cada serviço aparece para você e para as oficinas autorizadas no veículo.</li>
-            <li><b>Qualquer pessoa que use o TicketCar:</b> vê o perfil público das oficinas e as avaliações, com o primeiro nome e a inicial do sobrenome de quem avaliou, o modelo do carro e o serviço. Nunca mostramos placa, CPF, e-mail, telefone ou sobrenome completo de quem avalia.</li>
+            <li><b>Empresas que você autoriza:</b> veem os dados do veículo autorizado e o histórico de manutenção dele, só durante o prazo da autorização. O nome de quem registrou cada serviço aparece para você e para as empresas autorizadas no veículo.</li>
+            <li><b>Qualquer pessoa que use o TicketCar:</b> vê o perfil público das empresas e as avaliações, com o primeiro nome e a inicial do sobrenome de quem avaliou, o modelo do carro e o serviço. Nunca mostramos placa, CPF, e-mail, telefone ou sobrenome completo de quem avalia.</li>
             <li><b>Novo dono do veículo:</b> o histórico de manutenção acompanha o carro. Quem comprar o veículo e tiver o CRLV-e aprovado verá as manutenções já registradas, mas não os seus dados pessoais.</li>
             <li><b>Fornecedores que operam o serviço para nós:</b> hospedagem, armazenamento de arquivos, login e envio de e-mails (Amazon Web Services), banco de dados (MongoDB Atlas), envio de notificações (Google Firebase Cloud Messaging) e distribuição do app (Google Play). Eles tratam os dados só para prestar esses serviços.</li>
             <li><b>Autoridades:</b> quando houver obrigação legal ou ordem judicial.</li>
@@ -87,7 +87,7 @@
           </p>
           <ul>
             <li><b>Enquanto a conta estiver ativa:</b> guardamos os dados para prestar o serviço.</li>
-            <li><b>Ao excluir a conta:</b> apagamos nome, e-mail, CPF, celular, login e os arquivos do CRLV-e. O histórico de manutenção dos veículos é mantido, sem identificar você, porque pertence ao veículo. Nas suas avaliações, o comentário é apagado e o nome passa a ser "Cliente TicketCar"; a nota continua na média da oficina, sem identificar você.</li>
+            <li><b>Ao excluir a conta:</b> apagamos nome, e-mail, CPF, celular, login e os arquivos do CRLV-e. O histórico de manutenção dos veículos é mantido, sem identificar você, porque pertence ao veículo. Nas suas avaliações, o comentário é apagado e o nome passa a ser "Cliente TicketCar"; a nota continua na média da empresa, sem identificar você.</li>
             <li><b>Registros de acesso:</b> guardados por pelo menos 6 meses, como exige o Marco Civil da Internet.</li>
             <li><b>Registros de auditoria:</b> guardados enquanto forem necessários para segurança e para a defesa de direitos.</li>
           </ul>
@@ -122,9 +122,9 @@
 
           <h2 id="permissoes">9. Permissões do app</h2>
           <ul>
-            <li><b>Câmera:</b> usada só quando você toca para fotografar o CRLV-e, ler o QR code da autorização ou, no caso das oficinas, fotografar a peça trocada.</li>
+            <li><b>Câmera:</b> usada só quando você toca para fotografar o CRLV-e, ler o QR code da autorização ou, no caso das empresas, fotografar a peça trocada.</li>
             <li><b>Notificações:</b> pedida só depois que você toca em "Ativar" na tela inicial. Pode ser desligada no Perfil ou nas configurações do Android.</li>
-            <li><b>Localização:</b> pedida só quando você usa uma função que precisa dela, e só com o app aberto (nunca em segundo plano). Para mostrar oficinas perto de você, o app usa a localização aproximada, arredondada para cerca de 1 km: ela serve só para ordenar a lista na hora e não é guardada. Se o responsável por uma oficina tocar em "Estou na oficina agora", a localização precisa do aparelho marca o endereço da oficina no mapa, e esse ponto passa a fazer parte do perfil público da oficina. Se você recusar, pode buscar pela cidade ou pelo CEP.</li>
+            <li><b>Localização:</b> pedida só quando você usa uma função que precisa dela, e só com o app aberto (nunca em segundo plano). Para mostrar empresas perto de você, o app usa a localização aproximada, arredondada para cerca de 1 km: ela serve só para ordenar a lista na hora e não é guardada. Se o responsável por uma empresa tocar em "Estou no local agora", a localização precisa do aparelho marca o endereço da empresa no mapa, e esse ponto passa a fazer parte do perfil público da empresa. Se você recusar, pode buscar pela cidade ou pelo CEP.</li>
             <li><b>Internet:</b> para sincronizar os dados e receber atualizações do app.</li>
           </ul>
           <p>O app não acessa seus contatos nem a galeria sem uma ação sua, e só usa a localização como descrito acima. Este site não usa cookies de rastreamento.</p>
